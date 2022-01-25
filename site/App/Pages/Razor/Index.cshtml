@@ -1,0 +1,20 @@
+﻿@page
+@model App.Pages.Razor.IndexModel
+
+<h1>Razor</h1>
+<h2>Information</h2>
+<p>
+    <span class="bold">Date/Time:</span> @(Model.Date.ToString("yyyy-MM-dd hh:mm:ss"))
+</p>
+<p>Today is @Model.Date.ToString("dddd")!</p>
+
+<p class="bold" >Courses I have read</p>
+<ul>
+    @if (Model.Courses != null)
+    {
+        @foreach (var course in Model.Courses)
+        {
+            <li>@course.Id, @course.Name</li>
+        }
+    }
+</ul>

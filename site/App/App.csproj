@@ -6,4 +6,9 @@
         <ImplicitUsings>enable</ImplicitUsings>
     </PropertyGroup>
 
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="Pages\Razor\Index.cshtml" />
+      <_ContentIncludedByDefault Remove="Pages\About\Index.cshtml" />
+    </ItemGroup>
+
 </Project>
