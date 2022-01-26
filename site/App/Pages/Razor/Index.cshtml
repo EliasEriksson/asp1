@@ -1,20 +1,45 @@
 ﻿@page
 @model App.Pages.Razor.IndexModel
 
+@{
+    ViewData["Title"] = "Razor";
+    var date = DateTime.Now;
+    var courses = new List<Course>
+    {
+        new("DG008G", "Typografi och form för webb"),
+        new("DT003G", "Databaser"),
+        new("DT057G", "Webbutveckling I"),
+        new("DT084G", "Introduktion till programmering i JavaScript"),
+        new("DT093G", "Webbutveckling II"),
+        new("DT163G", "Digital bildbehandling för webb"),
+        new("DT173G", "Webbutveckling III"),
+        new("DT071G", "Programmering i C#.NET"),
+        new("DT162G", "Javascriptbaserad webbutveckling"),
+        new("DT191G", "Webbutveckling med .NET")
+    };
+}
+
 <h1>Razor</h1>
 <h2>Information</h2>
 <p>
-    <span class="bold">Date/Time:</span> @(Model.Date.ToString("yyyy-MM-dd hh:mm:ss"))
+    <span class="bold">Date/Time:</span> <span class="time">@(date.ToString("yyyy-MM-dd HH:mm:ss"))</span>
 </p>
-<p>Today is @Model.Date.ToString("dddd")!</p>
 
-<p class="bold" >Courses I have read</p>
+@if (date.DayOfWeek == System.DayOfWeek.Monday)
+{
+    <p>Today is Monday!</p>
+}
+else
+{
+    <p>Today is not Monday!</p>
+}
+
+
+<p class="bold">Courses I have read/reading</p>
 <ul>
-    @if (Model.Courses != null)
+    @foreach (var course in courses)
     {
-        @foreach (var course in Model.Courses)
-        {
-            <li>@course.Id, @course.Name</li>
-        }
+        <li>@course.Id, @course.Name</li>
     }
 </ul>
+<script src="~/js/site.js" type="module"></script>

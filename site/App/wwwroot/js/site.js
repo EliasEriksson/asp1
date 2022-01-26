@@ -1,4 +1,14 @@
-﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
+﻿const timeElements = document.querySelectorAll(".time")
+const format = new Intl.DateTimeFormat("en-se", {
+    year: "numeric", month: "numeric", day: "numeric",
+    hour: "numeric", minute: "numeric", second: "numeric"
+})
 
-// Write your JavaScript code.
+
+window.addEventListener("load", () => {
+    timeElements.forEach(element => {
+        setInterval(() => {
+            element.innerHTML = format.format(new Date()).replace(",", "")
+        }, 499)
+    })
+})
