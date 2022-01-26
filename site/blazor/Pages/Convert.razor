@@ -1,0 +1,31 @@
+@page "/converter/"
+
+
+<h1>Converter</h1>
+<div>
+    <h2>Feet to meter</h2>
+    <input @bind="_meter" type="number">
+    <p>@($"{MeterToFreedomUnits(_meter):N2}")</p>
+</div>
+<div>
+    <h2>km/h to miles/h</h2>
+    <input @bind="_kmh" type="number">
+    <p>@($"{KmhToFreedomUnits(_kmh):N2}")</p>
+</div>
+
+
+@code {
+
+    double _meter;
+    double _kmh;
+
+    static double MeterToFreedomUnits(double distance)
+    {
+        return distance * 3.2808399;
+    }
+    
+    static double KmhToFreedomUnits(double speed)
+    {
+        return speed * 0.621371192;
+    }
+}
