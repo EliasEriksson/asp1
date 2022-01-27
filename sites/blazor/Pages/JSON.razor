@@ -4,13 +4,14 @@
 <PageTitle>JSON</PageTitle>
 
 <h1>JSON</h1>
-
+@* makes sure the list requested and process before printing it out *@
 @if (_people == null)
 {
     <p>Loading...</p>
 }
 else
 {
+    // safe to print out the people list here as it is not null anymore
     <ul class="people">
         @foreach (var person in _people)
         {
@@ -22,7 +23,9 @@ else
 @code
 {
     private List<Person>? _people;
-
+    /**
+     * class for storing json data
+     */
     public class Person
     {
         public string Name { get; }
@@ -35,8 +38,12 @@ else
         }
     }
 
+    /**
+     * requests the data.json file in wwwroot dir
+     */
     protected override async Task OnInitializedAsync()
-    {
+    {   
+        // stores the data in the json file to a List of Person objects in _people variable
         _people = await Http.GetFromJsonAsync<List<Person>>("data.json");
     }
 }

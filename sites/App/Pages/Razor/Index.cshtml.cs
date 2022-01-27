@@ -3,6 +3,9 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace App.Pages.Razor
 {
+    /**
+     * class for storing courses
+     */
     public class Course
     {
         public string Id { get; }

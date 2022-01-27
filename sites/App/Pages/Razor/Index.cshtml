@@ -2,8 +2,11 @@
 @model App.Pages.Razor.IndexModel
 
 @{
+    // setting the page title to razor
     ViewData["Title"] = "Razor";
+    // saving the current time to a variable
     var date = DateTime.Now;
+    // creating course objects using the class in Index.cshtml.cs
     var courses = new List<Course>
     {
         new("DG008G", "Typografi och form för webb"),
@@ -25,6 +28,7 @@
     <span class="bold">Date/Time:</span> <span class="time">@(date.ToString("yyyy-MM-dd HH:mm:ss"))</span>
 </p>
 
+@* checking if the current day is monday *@
 @if (date.DayOfWeek == System.DayOfWeek.Monday)
 {
     <p>Today is Monday!</p>
@@ -37,6 +41,7 @@ else
 
 <p class="bold">Courses I have read/reading</p>
 <ul>
+    @* iterating over all the courses and writing them out to HTML *@
     @foreach (var course in courses)
     {
         <li>@course.Id, @course.Name</li>

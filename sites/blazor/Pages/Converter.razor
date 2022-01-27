@@ -6,12 +6,16 @@
 <div class="converters">
     <div class="converter">
         <h2>Meter to feet</h2>
+        @* bind to the _meter variable *@
         <input @bind="_meter">
+        @* output of the conversions formatted to 2 decimals with :N2 *@
         <p>@($"{MeterToFreedomUnits(_meter):N2}") feet</p>
     </div>
     <div>
         <h2>Km/h to mph</h2>
+        @* bind to the _kmph variable *@
         <input @bind="_kmph">
+        @* output of the conversion *@
         <p>@(Math.Round(KmphToFreedomUnits(_kmph))) mph</p>
     </div>
 </div>
@@ -21,11 +25,17 @@
     double _meter;
     double _kmph;
 
+    /**
+     * converts meter to corresponding freedom unit
+     */
     static double MeterToFreedomUnits(double distance)
     {
         return distance * 3.2808399;
     }
 
+    /**
+     * converts km/h to corresponding freedom unit
+     */
     static double KmphToFreedomUnits(double speed)
     {
         return speed * 0.621371192;
