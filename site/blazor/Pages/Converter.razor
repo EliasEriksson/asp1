@@ -1,0 +1,33 @@
+@page "/converter/"
+
+<PageTitle>Converter</PageTitle>
+<h1>Converter</h1>
+
+<div class="converters">
+    <div class="converter">
+        <h2>Meter to feet</h2>
+        <input @bind="_meter">
+        <p>@($"{MeterToFreedomUnits(_meter):N2}") feet</p>
+    </div>
+    <div>
+        <h2>Km/h to mph</h2>
+        <input @bind="_kmph">
+        <p>@(Math.Round(KmphToFreedomUnits(_kmph))) mph</p>
+    </div>
+</div>
+<Author></Author>
+@code {
+
+    double _meter;
+    double _kmph;
+
+    static double MeterToFreedomUnits(double distance)
+    {
+        return distance * 3.2808399;
+    }
+
+    static double KmphToFreedomUnits(double speed)
+    {
+        return speed * 0.621371192;
+    }
+}

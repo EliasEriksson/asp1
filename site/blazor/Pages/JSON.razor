@@ -1,0 +1,42 @@
+@page "/JSON/"
+@inject HttpClient Http
+
+<PageTitle>JSON</PageTitle>
+
+<h1>JSON</h1>
+
+@if (_people == null)
+{
+    <p>Loading...</p>
+}
+else
+{
+    <ul class="people">
+        @foreach (var person in _people)
+        {
+            <li>@person.Name is @person.Age years old.</li>
+        }
+    </ul>
+}
+<Author></Author>
+@code
+{
+    private List<Person>? _people;
+
+    public class Person
+    {
+        public string Name { get; }
+        public int Age { get; }
+
+        public Person(string name, int age)
+        {
+            this.Name = name;
+            this.Age = age;
+        }
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        _people = await Http.GetFromJsonAsync<List<Person>>("data.json");
+    }
+}
